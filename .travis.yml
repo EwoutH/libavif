@@ -1,21 +1,19 @@
 language: c
 dist: xenial
 
+addons:
+  apt:
+    packages:
+      - ninja-build
+      - python3
+      - python3-pip
+      - nasm
+
 matrix:
   include:
   - name: "GCC Debug"
     compiler: gcc
-    addons:
-      apt:
-        packages:
-          - ninja-build
-          - python3
-          - python3-pip
     before_script:
-      - curl -L https://download.videolan.org/contrib/nasm/nasm-2.14.tar.gz | tar xvz
-      - cd nasm-2.14
-      - ./configure && make -j2 && sudo make install
-      - nasm --version
       - pip3 --disable-pip-version-check install setuptools
       - pip3 --disable-pip-version-check install meson
       - cd $TRAVIS_BUILD_DIR/ext
@@ -30,17 +28,7 @@ matrix:
 
   - name: "GCC Release"
     compiler: gcc
-    addons:
-      apt:
-        packages:
-          - ninja-build
-          - python3
-          - python3-pip
     before_script:
-      - curl -L https://download.videolan.org/contrib/nasm/nasm-2.14.tar.gz | tar xvz
-      - cd nasm-2.14
-      - ./configure && make -j2 && sudo make install
-      - nasm --version
       - pip3 --disable-pip-version-check install setuptools
       - pip3 --disable-pip-version-check install meson
       - cd $TRAVIS_BUILD_DIR/ext
@@ -55,17 +43,7 @@ matrix:
 
   - name: "Clang Debug"
     compiler: clang
-    addons:
-      apt:
-        packages:
-          - ninja-build
-          - python3
-          - python3-pip
     before_script:
-      - curl -L https://download.videolan.org/contrib/nasm/nasm-2.14.tar.gz | tar xvz
-      - cd nasm-2.14
-      - ./configure && make -j2 && sudo make install
-      - nasm --version
       - pip3 --disable-pip-version-check install setuptools
       - pip3 --disable-pip-version-check install meson
       - cd $TRAVIS_BUILD_DIR/ext
@@ -80,17 +58,7 @@ matrix:
 
   - name: "Clang Release"
     compiler: clang
-    addons:
-      apt:
-        packages:
-          - ninja-build
-          - python3
-          - python3-pip
     before_script:
-      - curl -L https://download.videolan.org/contrib/nasm/nasm-2.14.tar.gz | tar xvz
-      - cd nasm-2.14
-      - ./configure && make -j2 && sudo make install
-      - nasm --version
       - pip3 --disable-pip-version-check install setuptools
       - pip3 --disable-pip-version-check install meson
       - cd $TRAVIS_BUILD_DIR/ext
