@@ -1,7 +1,8 @@
 image: Visual Studio 2019
 configuration:
-- Debug
 - Release
+- Debug
+
 
 install: git submodule update --init --recursive
 
