@@ -12,8 +12,10 @@ git clone -n -b 0.5.2 --depth 3 https://code.videolan.org/videolan/dav1d.git
 
 pwd
 cd dav1d
+dir
 mkdir build
 cd build
+pwd
 
 : # macOS might required: -Dc_args=-fno-stack-check
 meson --default-library=static --buildtype release ..
