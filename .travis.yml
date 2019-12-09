@@ -1,5 +1,8 @@
 language: c
 dist: xenial
+git:
+  depth: 3
+  quiet: true
 
 addons:
   apt:
