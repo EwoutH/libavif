@@ -20,7 +20,7 @@ addons:
     packages: ninja-build python3 python3-pip nasm gcc-9 g++-9
 
 install:
-  - pip3 install setuptools meson
+  - pip3 --disable-pip-version-check install setuptools meson
   - cd $TRAVIS_BUILD_DIR/ext
   - bash aom.cmd
   - bash dav1d.cmd
