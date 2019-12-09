@@ -13,6 +13,8 @@ env:
 
 addons:
   apt:
+    sources:
+      - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
       - ninja-build
       - python3
