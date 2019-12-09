@@ -1,5 +1,5 @@
 language: c
-dist: xenial
+dist: bionic
 git:
   depth: 3
   quiet: true
