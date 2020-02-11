@@ -8,12 +8,11 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get install -y ninja-build nasm
-        pip3 --disable-pip-version-check install setuptools
-        pip3 --disable-pip-version-check install meson==0.52.1
+        pip3 --disable-pip-version-check install setuptools meson==0.52.1
     - uses: actions/checkout@v2
     - name: Setup aom, dav1d and rav1e
       run: |
-        cd $TRAVIS_BUILD_DIR/ext
+        cd ext
         bash aom.cmd
         bash dav1d.cmd
         bash rav1e.cmd
