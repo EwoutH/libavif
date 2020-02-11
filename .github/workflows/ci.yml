@@ -8,11 +8,16 @@ jobs:
       CC: gcc-8
       CXX: g++-8
     steps:
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v1
+      with:
+        python-version: '3.8'
     - name: Install dependencies
       run: |
         sudo apt-get install -y ninja-build nasm gcc-8 g++-8
-        pip3 --disable-pip-version-check install setuptools
-        pip3 --disable-pip-version-check install meson
+        pip install --upgrade pip
+        pip install setuptools
+        pip install meson
     - uses: actions/checkout@v2
     - name: Setup aom
       working-directory: ./ext
