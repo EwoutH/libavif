@@ -12,12 +12,12 @@ jobs:
     - uses: actions/checkout@v2
     - name: Setup aom, dav1d and rav1e
       run: |
-      - cd $TRAVIS_BUILD_DIR/ext
-      - bash aom.cmd
-      - bash dav1d.cmd
-      - bash rav1e.cmd
-      - cd ..
-      - cd build
-      - cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON
+        cd $TRAVIS_BUILD_DIR/ext
+        bash aom.cmd
+        bash dav1d.cmd
+        bash rav1e.cmd
+        cd ..
+        cd build
+        cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON
     - name: Build libavif
       run: make
