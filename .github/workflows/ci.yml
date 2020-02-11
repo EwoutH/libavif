@@ -14,16 +14,14 @@ jobs:
         pip3 --disable-pip-version-check install setuptools
         pip3 --disable-pip-version-check install meson
     - uses: actions/checkout@v2
+    - run: cd ext
     - name: Setup aom
-      run: |
-        cd ext
-        bash aom.cmd
+      run: bash aom.cmd
     - name: Setup dav1d
       run: bash dav1d.cmd
     - name: Setup rav1e
-      run: |
-        bash rav1e.cmd
-        cd ..
+      run: bash rav1e.cmd
+    - run: cd ..
     - name: Prepare libavif (cmake)
       run: |
         cd build
