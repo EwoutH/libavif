@@ -1,4 +1,5 @@
 language: c
+config: Release
 os: linux
 dist: bionic
 
@@ -8,7 +9,7 @@ addons:
     sources:
       - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
-      - setuptools ninja-build meson nasm gcc-10 g++-10
+      - setuptools ninja-build meson nasm gcc-10 g++-10 clang-10
 
 env:
   global:
@@ -30,11 +31,17 @@ before_script:
 script:
   - make
 
-matrix:
+jobs:
   include:
-  - name: "GCC Release"
-    compiler: gcc
-    config: Release
-  - name: "Clang Release"
-    compiler: clang
-    config: Release
+  - name: "x64 GCC release"
+  - name: "x64 Clang release"
+    env: CC=clang-10 CXX=clang++-10
+  - name: "Arm64 GCC release"
+    arch: arm64
+  - name: "Arm64 Clang release"
+    arch: arm64
+    env: CC=clang-10 CXX=clang++-10
+  - name: "PowerPC GCC release"
+    arch: ppc64le
+  - name: "IBM Z GCC release"
+    arch: s390x
