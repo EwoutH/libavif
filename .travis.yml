@@ -5,7 +5,7 @@ dist: bionic
 
 addons:
   apt:
-     update: true
+    update: true
     sources:
       - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
