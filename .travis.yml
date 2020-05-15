@@ -9,8 +9,7 @@ addons:
     sources:
       - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
-      - setuptools ninja-build meson nasm gcc-10 g++-10 clang-10
-
+      - python3-setuptools ninja-build meson nasm gcc-10 g++-10 clang
 env:
   global:
    - CC=gcc-10 CXX=g++-10
@@ -35,12 +34,12 @@ jobs:
   include:
   - name: "x64 GCC release"
   - name: "x64 Clang release"
-    env: CC=clang-10 CXX=clang++-10
+    env: CC=clang CXX=clang++
   - name: "Arm64 GCC release"
     arch: arm64
   - name: "Arm64 Clang release"
     arch: arm64
-    env: CC=clang-10 CXX=clang++-10
+    env: CC=clang CXX=clang++
   - name: "PowerPC GCC release"
     arch: ppc64le
   - name: "IBM Z GCC release"
