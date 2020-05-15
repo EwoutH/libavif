@@ -10,7 +10,7 @@ addons:
       - sourceline: "ppa:ubuntu-toolchain-r/test"
       - sourceline: "deb http://apt.llvm.org/bionic/ llvm-toolchain-bionic-10 main"
     packages:
-      - python3-setuptools ninja-build meson nasm gcc-10 g++-10 clang-10
+      - python3-setuptools ninja-build meson nasm gcc-10 g++-10 clang
 
 before_script:
   - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
