@@ -9,9 +9,12 @@ addons:
     sources:
       - sourceline: "ppa:ubuntu-toolchain-r/test"
     packages:
-      - ninja-build python3 python3-pip nasm gcc-10 g++-10
+      - ninja-build python3 python3-pip $(apt-packages)
 
 before_script:
+  - curl -L https://download.videolan.org/contrib/nasm/nasm-2.14.tar.gz | tar xvz
+  - cd nasm-2.14
+  - ./configure && make -j2 && sudo make install
   - pip3 --disable-pip-version-check install setuptools
   - pip3 --disable-pip-version-check install meson
   - curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
@@ -25,25 +28,25 @@ before_script:
   - cd ..
   - mkdir build
   - cd build
-  - cmake -DCMAKE_BUILD_TYPE=$config -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_BUILD_EXAMPLES=ON -DAVIF_BUILD_APPS=ON -DAVIF_BUILD_TESTS=ON ..
+  - cmake .. -DCMAKE_BUILD_TYPE=$config -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_BUILD_EXAMPLES=ON -DAVIF_BUILD_APPS=ON -DAVIF_BUILD_TESTS=ON
 script:
   - make
 
 jobs:
   include:
   - name: "x64 GCC release"
-    env: CC=gcc-10 CXX=g++-10
+    env: CC=gcc-10 CXX=g++-10 apt-packages="gcc-10 g++-10"
   - name: "x64 Clang release"
-    compiler: clang
+    env: CC=clang-10 CXX=clang++-10 apt-packages="clang-10"
   - name: "Arm64 GCC release"
     arch: arm64
-    env: CC=gcc-10 CXX=g++-10
+    env: CC=gcc-10 CXX=g++-10 apt-packages="gcc-10 g++-10"
   - name: "Arm64 Clang release"
     arch: arm64
-    compiler: clang
+    env: CC=clang-10 CXX=clang++-10 apt-packages="clang-10"
   - name: "PowerPC GCC release"
     arch: ppc64le
-    env: CC=gcc-10 CXX=g++-10
+    env: CC=gcc-10 CXX=g++-10 apt-packages="gcc-10 g++-10"
   - name: "IBM Z GCC release"
     arch: s390x
-    env: CC=gcc-10 CXX=g++-10
+    env: CC=gcc-10 CXX=g++-10 apt-packages="gcc-10 g++-10"
