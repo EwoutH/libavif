@@ -2,6 +2,7 @@ language: c
 config: Release
 os: linux
 dist: bionic
+sudo: yes
 
 addons:
   apt:
