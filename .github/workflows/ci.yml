@@ -14,12 +14,7 @@ jobs:
         pip install --upgrade pip
         pip install setuptools
         pip install meson
-    - name: Install nasm
-      run: |
-        curl -L https://github.com/netwide-assembler/nasm/archive/nasm-2.15.05.tar.gz | tar xvz
-        cd nasm-nasm-2.15.05
-        ./configure && make -j2 && sudo make install
-        nasm --version
+    - uses: ilammy/setup-nasm
     - uses: actions/checkout@v2
     - name: Setup aom
       working-directory: ./ext
