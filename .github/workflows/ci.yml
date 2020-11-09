@@ -17,7 +17,7 @@ jobs:
     - name: Install nasm
       run: |
         curl -L https://github.com/netwide-assembler/nasm/archive/nasm-2.15.05.tar.gz | tar xvz
-        cd nasm-2.15.05
+        cd nasm-nasm-2.15.05
         ./configure && make -j2 && sudo make install
         nasm --version
     - uses: actions/checkout@v2
