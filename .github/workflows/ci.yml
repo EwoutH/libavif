@@ -14,7 +14,7 @@ jobs:
         pip install --upgrade pip
         pip install setuptools
         pip install meson
-    - uses: ilammy/setup-nasm
+    - uses: ilammy/setup-nasm@v1
     - uses: actions/checkout@v2
     - name: Setup aom
       working-directory: ./ext
