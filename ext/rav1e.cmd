@@ -14,7 +14,7 @@
 git clone -b 0.4 --depth 1 https://github.com/xiph/rav1e.git
 
 cd rav1e
-cargo install cbindgen
+cargo install --force cbindgen
 cbindgen -c cbindgen.toml -l C -o target/release/include/rav1e/rav1e.h --crate rav1e .
 
 cargo build --lib --release --features capi
