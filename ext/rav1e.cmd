@@ -15,6 +15,7 @@ git clone -b 0.4 --depth 1 https://github.com/xiph/rav1e.git
 
 cd rav1e
 cargo install cargo-c
+pkg-config --cflags rav1e
 cargo cinstall --release
 
 cd ..
