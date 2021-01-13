@@ -17,5 +17,6 @@ cd rav1e
 cargo install cargo-c
 pkg-config --cflags rav1e
 cargo cinstall --release
+pkg-config --cflags rav1e
 
 cd ..
