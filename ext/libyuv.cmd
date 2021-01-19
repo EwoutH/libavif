@@ -13,6 +13,6 @@ cd libyuv
 mkdir build
 cd build
 
-cmake -G Ninja -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release ..
+cmake -G ninja -DBUILD_SHARED_LIBS=0 -DCMAKE_BUILD_TYPE=Release ..
 ninja yuv
 cd ../..

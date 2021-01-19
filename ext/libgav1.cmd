@@ -16,6 +16,6 @@ git clone -b 20200225.2 --depth 1 https://github.com/abseil/abseil-cpp.git third
 mkdir build
 cd build
 
-cmake -G Ninja -DCMAKE_BUILD_TYPE=Release -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 ..
+cmake -G ninja -DCMAKE_BUILD_TYPE=Release -DLIBGAV1_THREADPOOL_USE_STD_MUTEX=1 ..
 ninja
 cd ../..
