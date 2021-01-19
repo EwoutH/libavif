@@ -16,7 +16,7 @@ jobs:
         pip install --upgrade pip
         pip install setuptools
         pip install meson
-    - uses: seanmiddleditch/gha-setup-ninja@v3
+    - uses: ashutoshvarma/setup-ninja@v1
     - uses: ilammy/setup-nasm@v1
       with:
         version: 2.15.05
@@ -40,9 +40,16 @@ jobs:
       run: |
         mkdir build && cd build
         cmake .. -DCMAKE_BUILD_TYPE=Release -DBUILD_SHARED_LIBS=OFF -DAVIF_CODEC_AOM=ON -DAVIF_LOCAL_AOM=ON -DAVIF_CODEC_DAV1D=ON -DAVIF_LOCAL_DAV1D=ON -DAVIF_CODEC_RAV1E=ON -DAVIF_LOCAL_RAV1E=ON -DAVIF_CODEC_LIBGAV1=ON -DAVIF_LOCAL_LIBGAV1=ON -DAVIF_LOCAL_LIBYUV=ON -DAVIF_BUILD_TESTS=1
+
     - name: Build libavif (make)
+      if: runner.os != 'Windows'
       working-directory: ./build
       run: make -j $(($(nproc) + 1))
+    - name: Build libavif (MSVC)
+      if: runner.os == 'Windows'
+      working-directory: ./build
+      run: msbuild libavif.sln
+
     - name: Run AVIF Tests
       working-directory: ./build
       run: ./aviftest ../tests/data
