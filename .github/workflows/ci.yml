@@ -16,7 +16,7 @@ jobs:
         pip install --upgrade pip
         pip install setuptools
         pip install meson
-    - uses: ashutoshvarma/setup-ninja@master
+    - uses: seanmiddleditch/gha-setup-ninja@v3
     - uses: ilammy/setup-nasm@v1
       with:
         version: 2.15.05
