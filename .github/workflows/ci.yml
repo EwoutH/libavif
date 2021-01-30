@@ -10,11 +10,10 @@ jobs:
     - uses: actions/setup-python@v2
     - name: Install dependencies
       run: |
-        DEBIAN_FRONTEND=noninteractive sudo apt-get update || true
-        DEBIAN_FRONTEND=noninteractive sudo apt-get install -y ninja-build gcc-10 g++-10
         pip install --upgrade pip
         pip install setuptools
         pip install meson
+    - uses: seanmiddleditch/gha-setup-ninja@v3
     - uses: ilammy/setup-nasm@v1
       with:
         version: 2.15.05
