@@ -11,9 +11,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - uses: microsoft/setup-msbuild@v1
-      if: runner.os == Windows
+      if: runner.os == 'Windows'
     - run: echo "CC=gcc-10 CXX=g++-10" >> $GITHUB_ENV
-      if: runner.os == Linux
+      if: runner.os == 'Linux'
     - uses: actions/setup-python@v2
     - uses: seanmiddleditch/gha-setup-ninja@v3
     - name: Install dependencies
@@ -47,5 +47,6 @@ jobs:
       working-directory: ./build
       run: make -j $(($(nproc) + 1))
     - name: Run AVIF Tests
+      if: runner.os == 'Linux'
       working-directory: ./build
       run: ./aviftest ../tests/data
