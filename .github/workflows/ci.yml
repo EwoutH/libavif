@@ -18,7 +18,7 @@ jobs:
       run: echo "CC=gcc-10" >> $GITHUB_ENV && echo "CXX=g++-10" >> $GITHUB_ENV
     - uses: actions/setup-python@v2
     - uses: seanmiddleditch/gha-setup-ninja@v3
-    - run: pip install setuptools meson
+    - run: pip install meson
     - uses: ilammy/setup-nasm@v1
       with:
         version: 2.15.05
