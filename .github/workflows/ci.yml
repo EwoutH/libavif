@@ -19,8 +19,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - if: runner.os == 'Windows'
-      shell: cmd
-      run: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Auxiliary\Build\vcvars64.bat"
+      uses: ilammy/msvc-dev-cmd@v1
     - uses: actions/setup-python@v2
     - uses: seanmiddleditch/gha-setup-ninja@v3
     - name: Install dependencies
