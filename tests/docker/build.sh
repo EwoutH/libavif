@@ -34,8 +34,9 @@ nasm --version
 
 # aom
 cd
-git clone -b v2.0.2 --depth 1 https://aomedia.googlesource.com/aom
+git clone --single-branch https://aomedia.googlesource.com/aom
 cd aom
+git checkout 106e9b1
 mkdir build.avif
 cd build.avif
 cmake -G Ninja -DBUILD_SHARED_LIBS=1 -DCMAKE_INSTALL_PREFIX=/usr ..
