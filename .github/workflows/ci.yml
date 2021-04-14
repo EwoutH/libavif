@@ -21,7 +21,6 @@ jobs:
       with:
         path: |
           ext/*/build*
-          ext/*/build.libavif
           ext/*/src
           ext/libjpeg
         key: ${{ runner.os }}-${{ hashFiles('ext/*.cmd') }}
