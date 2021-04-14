@@ -23,6 +23,7 @@ jobs:
           'ext/*/build*'
           'ext/*/build.libavif'
           'ext/*/src'
+          'ext/libjpeg'
         key: ${{ runner.os }}-${{ hashFiles('ext/*.cmd') }}
     - uses: ilammy/setup-nasm@v1
       if: steps.cache-ext.outputs.cache-hit != 'true'
