@@ -19,7 +19,9 @@ jobs:
       id: cache-ext
       uses: actions/cache@v2
       with:
-        path: 'ext/*/build*'
+        path: |
+          'ext/*/build*'
+          'ext/*/src'
         key: ${{ runner.os }}-${{ hashFiles('ext/*.cmd') }}
     - uses: ilammy/setup-nasm@v1
       if: steps.cache-ext.outputs.cache-hit != 'true'
