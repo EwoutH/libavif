@@ -57,7 +57,6 @@ jobs:
       working-directory: ./build
       run: make -j $(($(nproc) + 1))
     - name: Run AVIF Tests (on Linux)
-      if: runner.os == 'Linux' && false
+      if: runner.os == 'Linux'
       working-directory: ./build
       run: ./aviftest ../tests/data
-
