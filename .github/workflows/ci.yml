@@ -57,3 +57,4 @@ jobs:
       if: runner.os == 'Linux' && false
       working-directory: ./build
       run: ./aviftest ../tests/data
+
