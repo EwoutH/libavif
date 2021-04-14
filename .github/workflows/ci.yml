@@ -21,6 +21,7 @@ jobs:
       with:
         path: |
           'ext/*/build*'
+          'ext/*/build.libavif'
           'ext/*/src'
         key: ${{ runner.os }}-${{ hashFiles('ext/*.cmd') }}
     - uses: ilammy/setup-nasm@v1
