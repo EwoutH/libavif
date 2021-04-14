@@ -13,9 +13,6 @@ jobs:
     - name: Set GCC & G++ 10 compiler (on Linux)
       if: runner.os == 'Linux'
       run: echo "CC=gcc-10" >> $GITHUB_ENV && echo "CXX=g++-10" >> $GITHUB_ENV
-    - name: Use Xcode 12.3 (on macOS)
-      if: runner.os == 'macOS'
-      run: sudo xcode-select -s /Applications/Xcode_12.3.app
     - uses: actions/setup-python@v2
 
     - name: Cache external dependencies
@@ -24,7 +21,7 @@ jobs:
       with:
         path: ext
         key: ${{ runner.os }}-${{ hashFiles('ext/*.cmd') }}
-    - uses: ilammy/setup-nasm@v1\
+    - uses: ilammy/setup-nasm@v1
       if: steps.cache-ext.outputs.cache-hit != 'true'
       with:
         version: 2.15.05
