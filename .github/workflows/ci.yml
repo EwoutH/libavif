@@ -15,6 +15,7 @@ jobs:
       uses: ilammy/msvc-dev-cmd@v1
     - name: Call MSVC compiler
       if: runner.os == 'Windows'
+      shell: cmd
       run: call "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Auxiliary\Build\vcvars64.bat"
     - name: Set GCC & G++ 10 compiler (on Linux)
       if: runner.os == 'Linux'
